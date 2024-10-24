@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/smokecat/goweb-components/xcode"
+	"github.com/smokecat/goweb-components/pkg/xcode"
 )
 
 func TestJoin(t *testing.T) {
@@ -23,8 +23,8 @@ func TestJoin(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Join(tt.args.err, tt.args.code, tt.args.msg); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Join() = %v, want %v", got, tt.want)
+			if got := Wrap(tt.args.err, tt.args.code, tt.args.msg); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Wrap() = %v, want %v", got, tt.want)
 			}
 		})
 	}

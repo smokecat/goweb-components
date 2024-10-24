@@ -1,10 +1,9 @@
 package xerr
 
 import (
-	"errors"
-	"fmt"
+	"github.com/pkg/errors"
 
-	"github.com/smokecat/goweb-components/xcode"
+	"github.com/smokecat/goweb-components/pkg/xcode"
 )
 
 type XErr interface {
@@ -37,7 +36,7 @@ func New(code xcode.Code, msg string) XErr {
 	return newXe(code, msg)
 }
 
-func Join(err error, code xcode.Code, msg string) XErr {
+func Wrap(err error, code xcode.Code, msg string) XErr {
 	if err == nil {
 		return newXe(code, msg)
 	}
@@ -47,12 +46,12 @@ func Join(err error, code xcode.Code, msg string) XErr {
 		joinErr = e
 		joinErr.code = code
 		joinErr.msg = msg
-		joinErr.err = e.err
+		joinErr.err = errors.Wrap(e.err, msg)
 	} else {
 		joinErr = newXe(code, msg)
+		joinErr.err = errors.Wrap(err, msg)
 	}
 
-	joinErr.err = errors.Join(joinErr.err, newError(code, msg))
 	return joinErr
 }
 
@@ -136,7 +135,7 @@ func newError(code xcode.Code, msg string) error {
 		return nil
 	}
 	if msg == "" {
-		return fmt.Errorf("%s", code.Text())
+		return errors.New(code.Text())
 	}
-	return fmt.Errorf("%s", msg)
+	return errors.New(msg)
 }

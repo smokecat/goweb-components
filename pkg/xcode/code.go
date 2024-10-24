@@ -19,6 +19,7 @@ var (
 	CodeForbidden           = NewHttp(http.StatusForbidden)
 	CodeNotFound            = NewHttp(http.StatusNotFound)
 	CodeMethodNotAllowed    = NewHttp(http.StatusMethodNotAllowed)
+	CodeRequestTimeout      = NewHttp(http.StatusRequestTimeout)
 	CodeTooManyRequests     = NewHttp(http.StatusTooManyRequests)
 	CodeInternalServerError = NewHttp(http.StatusInternalServerError)
 	CodeNotImplemented      = NewHttp(http.StatusNotImplemented)
