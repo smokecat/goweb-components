@@ -45,6 +45,11 @@ func msgForTag(fe validator.FieldError) string {
 		return fmt.Sprintf("Field `%s` must be greater than or equal to %s", fe.Field(), fe.Param())
 	case "max":
 		return fmt.Sprintf("Field `%s` must be less than or equal to %s", fe.Field(), fe.Param())
+	case "len":
+		return fmt.Sprintf("Field `%s`'s length must be %s", fe.Field(), fe.Param())
+	case "required_if":
+		params := strings.Split(fe.Param(), " ")
+		return fmt.Sprintf("Field `%s` is required if the field `%s` is equal to `%s`", fe.Field(), params[0], params[1])
 	default:
 		return fe.Error()
 	}
