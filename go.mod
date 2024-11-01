@@ -3,7 +3,9 @@ module github.com/smokecat/goweb-components
 go 1.22.6
 
 require (
+	github.com/go-playground/validator/v10 v10.22.1
 	github.com/pkg/errors v0.9.1
+	github.com/shopspring/decimal v1.4.0
 	github.com/zeromicro/go-zero v1.7.2
 	golang.org/x/crypto v0.26.0
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c
@@ -20,7 +22,6 @@ require (
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.22.1 // indirect
 	github.com/go-sql-driver/mysql v1.8.1 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.20.0 // indirect
 	github.com/klauspost/compress v1.17.9 // indirect
